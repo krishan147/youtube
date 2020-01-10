@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05aaf409-fae3-450d-a8fa-c68484a08dd1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/keywords.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/full_youtube.txt" beforeDir="false" afterPath="$PROJECT_DIR$/full_youtube.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +40,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.keywords">
+  <component name="RunManager" selected="Python.comments">
     <configuration name="comments" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="youtube" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -147,9 +148,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.comments" />
         <item itemvalue="Python.keywords" />
         <item itemvalue="Python.merge" />
-        <item itemvalue="Python.comments" />
         <item itemvalue="Python.videos" />
         <item itemvalue="Python.search" />
       </list>

@@ -1,9 +1,3 @@
-import argparse
-import json
-from googleapiclient.discovery import build
-
-# KRISHAN FOR SOME REASON IT CUTS OFF!! YOU NEED TO PULL THE WHOLE COMMENT
-
 import requests
 import time
 import pandas as pd
@@ -14,35 +8,31 @@ with open('apikey.txt', 'r') as apikey:
 
 def youtubeComments(videoId):
     time.sleep(6)
-    url = 'https://www.googleapis.com/youtube/v3/commentThreads?part=id%2C%20replies&order=relevance&textFormat=html&videoId=' + videoId + '&key=' + DEVELOPER_KEY
+
+    url = 'https://www.googleapis.com/youtube/v3/commentThreads?key=' + DEVELOPER_KEY + '&textFormat=plainText&part=snippet&videoId=' + videoId + '&maxResults=100'
+
     request = requests.get(url)
     data = request.json()
-
     list_frames = []
+    time.sleep(10)
 
     for items in data['items']:
-        if 'replies' in items:
-            for comments in items['replies']['comments']:
-                snippet = comments['snippet']
-                df = pd.DataFrame.from_dict(snippet)
-                list_frames.append(df)
+        snippet = items['snippet']
+        df = pd.DataFrame.from_dict(snippet)
+        list_frames.append(df)
 
     if 'nextPageToken' in str(data):
         while 'nextPageToken' in str(data):
             time.sleep(8)
             next_page_token =  data['nextPageToken']
-            concurrent_pages = 'https://www.googleapis.com/youtube/v3/commentThreads?part=id%2C%20replies&order=relevance&textFormat=html&videoId=' + videoId + '&key=' + DEVELOPER_KEY + '&pageToken=' + next_page_token
+            concurrent_pages = 'https://www.googleapis.com/youtube/v3/commentThreads?key=' + DEVELOPER_KEY + '&textFormat=plainText&part=snippet&videoId=' + videoId + '&maxResults=100' + '&pageToken=' + next_page_token
             request = requests.get(concurrent_pages)
             data = request.json()
 
             for items in data['items']:
-                if 'replies' in items:
-                    for comments in items['replies']['comments']:
-                        snippet = comments['snippet']
-                        df = pd.DataFrame.from_dict(snippet)
-                        list_frames.append(df)
-
-
+                snippet = items['snippet']
+                df = pd.DataFrame.from_dict(snippet)
+                list_frames.append(df)
 
     return list_frames
 
